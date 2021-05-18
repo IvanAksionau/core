@@ -1,0 +1,47 @@
+Configuration:
+  status: WARN
+  name: 'log4j2 configuration'
+  packages: 'com.epam.ta.reportportal.log4j.appender'
+  properties:
+    property:
+      name: pattern
+      value: '%d [%t] %-5p %c - %m%n'
+  Appenders:
+    Console:
+      name: 'console'
+      PatternLayout:
+        Pattern: ${pattern}
+    RollingFile:
+      name: 'file'
+      fileName: 'test-output/logs/log4j.log'
+      filePattern: 'test-output/logs/log4j.%i.log'
+      PatternLayout:
+        pattern: ${pattern}
+      Policies:
+        - SizeBasedTriggeringPolicy:
+            size: '1 MB'
+    ReportPortalLog4j2Appender:
+      name: 'ReportPortalAppender'
+      PatternLayout:
+        pattern: ${pattern}
+  Loggers:
+    logger:
+      - name: 'org.springframework'
+        level: WARN
+      - name: 'com.tr.eds.qaframework.utils.ReportPortalUtils'
+        level: INFO
+        AppenderRef:
+          - ref: 'ReportPortalAppender'
+        additivity: false
+      - name: 'com.tr.eds.qaframework.gatewaycommons.http.requester.log.TextHttpLogger'
+        level: INFO
+        AppenderRef:
+          - ref: 'console'
+          - ref: 'file'
+        additivity: false
+    Root:
+      level: INFO
+      AppenderRef:
+        - ref: 'console'
+        - ref: 'file'
+        - ref: 'ReportPortalAppender'
