@@ -176,7 +176,7 @@ class Asserts implements IAsserts {
         } else {
             String verificationMessage = getFailedVerificationMessage(assertionErrors, assertionsCount)
             LOGGER.error(verificationMessage)
-            throw new AssertionError(verificationMessage)
+            throw new AssertionError(verificationMessage as Object)
         }
     }
 

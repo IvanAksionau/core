@@ -25,7 +25,6 @@ import software.amazon.awssdk.auth.credentials.DefaultCredentialsProvider
 import software.amazon.awssdk.regions.Region
 import software.amazon.awssdk.services.secretsmanager.SecretsManagerClient
 
-import javax.annotation.PostConstruct
 import java.util.logging.Logger
 
 @Configuration
@@ -36,7 +35,6 @@ class BaseConfiguration {
     @Autowired
     private ConfigurableEnvironment environment
 
-    @PostConstruct
     void configurePropertySources() {
         PropertySourcesConfigurer.configure(environment)
     }
@@ -89,6 +87,6 @@ class BaseConfiguration {
 
     @Bean
     Logger logger() {
-        new Logger()
+        new Logger("Logger")
     }
 }

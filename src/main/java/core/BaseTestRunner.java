@@ -2,9 +2,9 @@ package core;
 
 import core.reportportal.ReportPortalPropertiesResolver;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.tika.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.util.FileCopyUtils;
 import org.testng.TestNG;
 import picocli.CommandLine;
 import picocli.CommandLine.Option;
@@ -64,7 +64,7 @@ public class BaseTestRunner implements Runnable {
             try (FileOutputStream out = new FileOutputStream(testSuite);
                 InputStream in = this.getClass().getResourceAsStream("/testsuites/" + suiteName + xmlSuffix)) {
                 if (in != null) {
-                    IOUtils.copy(in, out);
+                    FileCopyUtils.copy(in, out);
                 } else {
                     LOGGER.error("Test suite with name " + suiteName + " was not found");
                 }

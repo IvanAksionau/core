@@ -44,8 +44,7 @@ class SecretsAwareEnvironmentFactory implements IEnvironmentFactory {
                     .build()
             result = awsSecretsManager.getSecretValue(getSecretValueRequest)
         }
-        catch (ResourceNotFoundException | InvalidParameterException | InvalidRequestException
-        | DecryptionFailureException | InternalServiceErrorException | SdkClientException e) {
+        catch (ResourceNotFoundException | InvalidParameterException | InvalidRequestException | DecryptionFailureException | InternalServiceErrorException | SdkClientException e) {
             throw new ConfigurationException("Failed to retrieve secret [${secretId}] for user [${user}].", e)
         }
 
