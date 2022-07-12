@@ -28,12 +28,12 @@ Configuration:
     logger:
       - name: 'org.springframework'
         level: WARN
-      - name: 'com.tr.eds.qaframework.utils.ReportPortalUtils'
+      - name: 'com.ia.qaframework.utils.ReportPortalUtils'
         level: INFO
         AppenderRef:
           - ref: 'ReportPortalAppender'
         additivity: false
-      - name: 'com.tr.eds.qaframework.gatewaycommons.http.requester.log.TextHttpLogger'
+      - name: 'com.ia.qaframework.gatewaycommons.http.requester.log.TextHttpLogger'
         level: INFO
         AppenderRef:
           - ref: 'console'

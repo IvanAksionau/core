@@ -23,7 +23,7 @@ import java.time.LocalDateTime
         elementType = Appender.ELEMENT_TYPE,
         printObject = false)
 final class ParalleledTestLogAppender extends AbstractAppender {
-    private final static String REPORT_PORTAL_KEY = 'com.tr.eds.qaframework.utils.ReportPortalUtils'
+    private final static String REPORT_PORTAL_KEY = 'com.ia.qaframework.utils.ReportPortalUtils'
     private final static String LINE_SEPARATOR = System.lineSeparator()
 
     ParalleledTestLogAppender(String name, Filter filter, Layout<? extends Serializable> layout,

@@ -80,7 +80,7 @@ class BaseConfiguration {
     }
 
     @Bean
-    SecretsManagerClient secretsManager(@Value('${com.tr.eds.core.BaseConfiguration/awsSecretsRegion}') Region region) {
+    SecretsManagerClient secretsManager(@Value('${com.ia.core.BaseConfiguration/awsSecretsRegion}') Region region) {
         SecretsManagerClient.builder()
                 .region(region)
                 .credentialsProvider(DefaultCredentialsProvider.builder().build())

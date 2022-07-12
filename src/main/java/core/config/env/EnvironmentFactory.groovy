@@ -8,10 +8,10 @@ import org.springframework.stereotype.Component
 @Component
 class EnvironmentFactory implements IEnvironmentFactory {
 
-    public static final String DEFAULT_ENV_PROPERTY_KEY = 'com.tr.eds.core.config.env.EnvironmentFactory/defaultEnv'
-    public static final String SECRET_KEY = 'com.tr.eds.qa.args.secret'
-    public static final String USER_PASSWORD = 'com.tr.eds.qa.args.password'
-    public static final String ADMIN_PASSWORD = 'com.tr.eds.qa.args.adminPassword'
+    public static final String DEFAULT_ENV_PROPERTY_KEY = 'com.ia.core.config.env.EnvironmentFactory/defaultEnv'
+    public static final String SECRET_KEY = 'com.ia.qa.args.secret'
+    public static final String USER_PASSWORD = 'com.ia.qa.args.password'
+    public static final String ADMIN_PASSWORD = 'com.ia.qa.args.adminPassword'
 
     private String overridingUrl
     private String overridingEnvType

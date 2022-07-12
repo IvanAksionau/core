@@ -35,19 +35,19 @@ class PropertiesMapper implements IPropertiesMapper {
 
     private Properties properties
 
-    @Value('${com.tr.eds.core.BaseConfiguration/awsSecretsRegion}')
+    @Value('${com.ia.core.BaseConfiguration/awsSecretsRegion}')
     private Region region
 
-    @Value('${com.tr.eds.core.local.url:#{null}}')
+    @Value('${com.ia.core.local.url:#{null}}')
     private String localUrl
 
-    @Value('${com.tr.eds.core.local.run:#{false}}')
+    @Value('${com.ia.core.local.run:#{false}}')
     private boolean isLocalRun
 
-    @Value('${com.tr.eds.core.local.settings:#{false}}')
+    @Value('${com.ia.core.local.settings:#{false}}')
     private boolean isLocalSettings
 
-    @Value('${com.tr.eds.qa.args.scheme:#{null}}')
+    @Value('${com.ia.qa.args.scheme:#{null}}')
     private String scheme
 
     @Autowired
@@ -71,13 +71,7 @@ class PropertiesMapper implements IPropertiesMapper {
         Properties objectProps = settings.entrySet()
                 .collectEntries(new Properties()) {
                     [(it.key.contains(IAC_URL_KEY) ? 'url'
-                            : it.key.contains('InternalUser') ? 'internalUser'
-                            : it.key.contains('ErtUser') ? 'ertUser'
-                            : it.key.contains('UserUUID') ? 'userUUID'
-                            : it.key.contains('LongEnv') ? 'longEnv'
-                            : it.key.contains('CookieURL') ? 'cookieURL'
-                            : it.key.toLowerCase())
-                     : it.value]
+                            : it.key.contains('InternalUser') ? 'internalUser' : it.key.toLowerCase()) : it.value]
                 } as Properties
 
         PROPS_MAPPER.readPropertiesAs(objectProps, valueType)
@@ -137,9 +131,9 @@ class PropertiesMapper implements IPropertiesMapper {
     }
 
     private void setSystemProperties(Map<String, String> settings) {
-        System.setProperty("${com.tr.eds.core.RuntimePropsKeys.PROPS_PREFIX}authUrl", settings.get('AuthUrl') ?: '')
-        System.setProperty("${com.tr.eds.core.RuntimePropsKeys.PROPS_PREFIX}gwUrl", settings.get('GwUrl') ?: '')
-        System.setProperty("${com.tr.eds.core.RuntimePropsKeys.PROPS_PREFIX}gwUrlStg", settings.get('GwUrlStg') ?: '')
+        System.setProperty("${RuntimePropsKeys.PROPS_PREFIX}authUrl", settings.get('AuthUrl') ?: '')
+        System.setProperty("${RuntimePropsKeys.PROPS_PREFIX}gwUrl", settings.get('GwUrl') ?: '')
+        System.setProperty("${RuntimePropsKeys.PROPS_PREFIX}gwUrlStg", settings.get('GwUrlStg') ?: '')
     }
 
     @SuppressWarnings('Instanceof')
